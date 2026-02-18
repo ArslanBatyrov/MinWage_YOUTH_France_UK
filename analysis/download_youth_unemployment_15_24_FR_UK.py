@@ -22,7 +22,10 @@ def download_and_filter(
     filter for given countries and year range, and save as a CSV.
     """
     if output_path is None:
-        output_path = Path("youth_unemployment_15_24_FR_UK_2000_2024.csv")
+        # Output to data/ folder relative to project root
+        script_dir = Path(__file__).parent
+        project_root = script_dir.parent
+        output_path = project_root / "data" / "youth_unemployment_15_24_FR_UK_2000_2024.csv"
 
     print(f"Downloading data from {url} ...")
     # Some servers (including Our World in Data's file host) may return 403
