@@ -13,8 +13,15 @@ The data is sourced from **Our World in Data**, which provides harmonized, model
 
 ## Files
 
-- `youth_unemployment_15_24_FR_UK_2000_2024.csv` - Filtered dataset containing annual youth unemployment rates for France and UK
-- `download_youth_unemployment_15_24_FR_UK.py` - Python script to download and filter the data from Our World in Data
+### Data
+- `data/youth_unemployment_15_24_FR_UK_2000_2024.csv` - Youth unemployment rates for France and UK
+- `data/minimum_wage_FR_UK_2000_2024.csv` - Minimum wage (USD) for France and UK
+- `NATTIONAL MINIMUM WAGE.xlsx` - UK National Minimum Wage / National Living Wage history (GBP) from official sources
+
+### Scripts
+- `analysis/download_youth_unemployment_15_24_FR_UK.py` - Download youth unemployment data from Our World in Data
+- `analysis/load_national_minimum_wage.py` - Load and process UK NMW/NLW from the Excel file
+- `analysis/plot_unemployment_minwage.py` - Generate graphs combining youth unemployment and minimum wage
 
 ## Usage
 
@@ -24,7 +31,19 @@ The data is sourced from **Our World in Data**, which provides harmonized, model
 python download_youth_unemployment_15_24_FR_UK.py
 ```
 
-This will download the latest data from Our World in Data and save it as `youth_unemployment_15_24_FR_UK_2000_2024.csv`.
+This will download the latest data from Our World in Data and save it as `data/youth_unemployment_15_24_FR_UK_2000_2024.csv`.
+
+### Generate graphs
+
+```bash
+pip install -r requirements.txt
+python analysis/plot_unemployment_minwage.py
+```
+
+This produces, in `outputs/`:
+- `fig_unemployment_minwage_FR.pdf` / `.png` - France: youth unemployment + minimum wage (USD)
+- `fig_unemployment_minwage_UK.pdf` / `.png` - UK: youth unemployment + National Minimum Wage (GBP, from Excel)
+- `fig_youth_unemployment_FR_UK.pdf` / `.png` - Combined youth unemployment for both countries
 
 ## Data Format
 
@@ -33,6 +52,8 @@ The CSV file contains the following columns:
 - `Code`: ISO country code (FRA or GBR)
 - `Year`: Year of observation
 - `Unemployment rate, ages 15-24`: Youth unemployment rate as a percentage
+
+
 
 
 
